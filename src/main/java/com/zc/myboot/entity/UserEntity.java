@@ -13,17 +13,19 @@ public class UserEntity implements Serializable {
 
     @Id
     @GeneratedValue
-//    @Column(name = "id")
     private Long id;
-
-//    @Column(name = "name")
     private String name;
-
-//    @Column(name ="age")
     private Integer age;
-
-//    @Column(name = "address")
     private String address;
+    private String pwd;
+
+    public String getPwd() {
+        return pwd;
+    }
+
+    public void setPwd(String pwd) {
+        this.pwd = pwd;
+    }
 
     public Long getId() {
         return id;

@@ -1,6 +1,6 @@
 package com.zc.myboot.controller;
 
-import com.zc.myboot.dao.UserJPA;
+import com.zc.myboot.jpa.UserJPA;
 import com.zc.myboot.entity.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;

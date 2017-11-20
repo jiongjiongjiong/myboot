@@ -1,4 +1,4 @@
-package com.zc.myboot.dao;
+package com.zc.myboot.jpa;
 
 import com.zc.myboot.entity.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
