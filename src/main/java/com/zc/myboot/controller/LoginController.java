@@ -23,24 +23,28 @@ import javax.servlet.http.HttpServletRequest;
 public class LoginController {
 
     @Autowired
-    UserJPA userJPA;
+    private UserJPA userJPA;
 
     @RequestMapping(value = "/login")
     public String login(UserEntity user, HttpServletRequest request){
         boolean flag = true;
         String result = "登录成功";
-        UserEntity userEntity = userJPA.findOne(new Specification<UserEntity>(){
+        //根据用户名查询用户是否存在
+        UserEntity userEntity = userJPA.findOne(new Specification<UserEntity>() {
             @Override
-            public Predicate toPredicate(Root<UserEntity> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder){
+            public Predicate toPredicate(Root<UserEntity> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
                 criteriaQuery.where(criteriaBuilder.equal(root.get("name"), user.getName()));
                 return null;
             }
         });
 
+
         if ( userEntity == null ){
             result = "用户不存在，登录失败";
+            flag = false;
         }else if( !userEntity.getPwd().equals(user.getPwd())){
             result = "用户密码不正确，登录失败";
+            flag = false;
         }
 
         if (flag){
