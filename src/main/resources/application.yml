@@ -4,7 +4,7 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/test?characterEncoding=utf8&useSSL=false
     username: root
-    password: js3aztE[nh+6oR{Eoa>iDvQzvoKabL?hQxG94ifiLhYvBDD>cz
+    password: min123
     #最大活跃数
     maxActive: 20
     #初始化数量
