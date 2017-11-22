@@ -1,5 +1,7 @@
-package com.zc.myboot;
+package com.zc.myboot.interceptor;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -7,14 +9,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
+ * 登录拦截
  * @author: zc
  * @date: 2017/11/21
  */
 public class SessionInterceptor  implements HandlerInterceptor{
+
+    private static final Logger logger = LoggerFactory.getLogger(SessionInterceptor.class);
+
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object o) throws Exception {
-//        System.out.println(request.getRequestURI());
-//        //登录不做拦截
+        logger.info("request uri: {}",request.getRequestURI());
+        //登录不做拦截
 //        if ( request.getRequestURI().equals("/user/login") || request.getRequestURI().equals("/user/login_view") ){
 //            return true;
 //        }

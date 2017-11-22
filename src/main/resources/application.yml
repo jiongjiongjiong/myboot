@@ -2,9 +2,9 @@ spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/test?characterEncoding=utf8
+    url: jdbc:mysql://127.0.0.1:3306/test?characterEncoding=utf8&useSSL=false
     username: root
-    password: min123
+    password: js3aztE[nh+6oR{Eoa>iDvQzvoKabL?hQxG94ifiLhYvBDD>cz
     #最大活跃数
     maxActive: 20
     #初始化数量
@@ -31,7 +31,7 @@ spring:
         show_sql: true
         format_sql: true
 
-mvc:
+  mvc:
   view:
     prefix: /WEB-INF/jsp/
     suffix: .jsp
