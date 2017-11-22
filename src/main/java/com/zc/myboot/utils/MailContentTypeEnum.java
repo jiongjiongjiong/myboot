@@ -1,0 +1,23 @@
+package com.zc.myboot.utils;
+
+/**
+ * @description:
+ * @author: Zhangc
+ * @date: 2017/11/22
+ */
+
+public enum MailContentTypeEnum {
+    HTML("text/html;charset=UTF-8"),
+    TEXT("text")
+    ;
+
+    private String value;
+
+    MailContentTypeEnum(String value){
+        this.value = value;
+    }
+
+    public String getValue() {
+        return value;
+    }
+}

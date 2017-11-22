@@ -10,5 +10,5 @@ import java.io.Serializable;
  * @author: zc
  * @date: 2017/11/18
  */
-public interface UserJPA extends JpaRepository<UserEntity,Long>,JpaSpecificationExecutor<UserEntity>,Serializable {
+public interface UserJPA extends JpaRepository<UserEntity,Long>,JpaSpecificationExecutor<UserEntity>{
 }
