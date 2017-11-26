@@ -2,6 +2,8 @@ package com.zc.myboot.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.zc.myboot.utils.LoggerUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,6 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("/index")
 public class IndexController {
 
+    private static final Logger logger = LoggerFactory.getLogger(IndexController.class);
 
     /**
      * 初始化登录页面
@@ -30,6 +33,7 @@ public class IndexController {
 
     @RequestMapping(value = "/index",method = RequestMethod.GET)
     public String index(){
+        logger.info("this is a log!");
         return "index";
     }
 
