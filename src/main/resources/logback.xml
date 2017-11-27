@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<confguration debug="false">
+<configuration debug="false">
     <!--定义日志文件的存储地址 勿在LogBack的配置中使用相对路径-->
     <property name="LOG_HOME" value="./logs" />
     <!--控制台输出-->
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
             <!--格式化输出： %thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符-->
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [$thread] %-5level %logger[50] - %msg%m</pattern>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [$thread] %-5level %logger[50] - %msg%n</pattern>
             <charset class="java.nio.charset.Charset">UTF-8</charset>
         </encoder>
     </appender>
@@ -19,18 +19,18 @@
             <MaxHistory>30</MaxHistory>
         </rollingPolicy>
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-            <!--格式化输出： %d表示日期，%thread表示线程名， %-5levet：级别从左显示5个字符宽度，%msg：日志消息，%n换行符-->
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5levle %logger[50] - %msg%n</pattern>
+            <!--格式化输出： %d表示日期，%thread表示线程名， %-5level：级别从左显示5个字符宽度，%msg：日志消息，%n换行符-->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger[50] - %msg%n</pattern>
             <charset class="java.nio.charset.Charset">UTF-8</charset>
         </encoder>
         <!--日志文件最大的大小-->
-        <tiggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <MaxFileSize>10MB</MaxFileSize>
-        </tiggeringPolicy>
+        </triggeringPolicy>
     </appender>
     <!--日志输出规则-->
     <root level="INFO">
-        <appender-ref ref="STDIUT" />
+        <appender-ref ref="STDOUT" />
         <appender-ref ref="FILE" />
     </root>
-</confguration>
+</configuration>

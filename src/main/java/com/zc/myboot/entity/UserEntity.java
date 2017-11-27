@@ -1,5 +1,7 @@
 package com.zc.myboot.entity;
 
+import com.zc.myboot.base.BaseEntity;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -9,7 +11,7 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name = "t_user")
-public class UserEntity implements Serializable {
+public class UserEntity extends BaseEntity {
 
     @Id
     @GeneratedValue
