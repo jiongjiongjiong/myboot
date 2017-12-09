@@ -2,12 +2,12 @@ package com.zc.myboot.controller;
 
 import com.zc.myboot.jpa.UserJPA;
 import com.zc.myboot.entity.UserEntity;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 /**
@@ -22,34 +22,36 @@ public class UserController {
     private UserJPA userJPA;
 
     @RequestMapping(value ="/list", method = RequestMethod.GET)
+    @ApiOperation(value="获取用户列表", notes="")
     public List<UserEntity> list(){
         return userJPA.findAll();
     }
 
-    @RequestMapping(value = "/save", method = RequestMethod.GET)
+    @PostMapping(value = "/save")
+    @ApiOperation(value="创建用户", notes="根据User对象创建用户")
     public UserEntity save(UserEntity entity){
         return userJPA.save(entity);
     }
 
-    @RequestMapping(value ="/delete", method = RequestMethod.GET)
+    @PatchMapping(value ="/delete")
     public List<UserEntity> delete(Long id){
         userJPA.delete(id);
         return userJPA.findAll();
     }
 
-    @RequestMapping(value = "/age")
+    @PostMapping(value = "/age")
     public List<UserEntity> age(){
         return userJPA.nativeQuery(20);
     }
 
 
-    @RequestMapping(value = "/deleteWhere")
+    @PostMapping(value = "/deleteWhere")
     public String deleteWhere(){
         userJPA.deleteQuery("admin3","444");
         return "删除成功";
     }
 
-    @RequestMapping(value = "/cutpage")
+    @PostMapping(value = "/cutpage")
     public List<UserEntity> cutPage(int page){
         UserEntity user = new UserEntity();
         user.setSize(2);

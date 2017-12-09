@@ -3,6 +3,8 @@ package com.zc.myboot.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.zc.myboot.base.DemoEntity;
 import com.zc.myboot.utils.LoggerUtils;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,7 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -37,6 +40,7 @@ public class IndexController {
      * @return
      */
     @RequestMapping(value = "/login_view",method = RequestMethod.GET)
+    @ApiOperation(value="登录页面初始化", notes="123")
     public String login_view(){
         return "login";
     }
@@ -48,8 +52,8 @@ public class IndexController {
     }
 
 
-//    @ResponseBody
     @RequestMapping(value = "/login", produces = "application/json; charset=utf-8")
+    @ApiOperation(value="登录页面", notes="333")
     public JSONObject login(HttpServletRequest request,String name) throws Exception{
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("msg","用户："+name+"，登录成功。");
@@ -59,7 +63,9 @@ public class IndexController {
     }
 
     @RequestMapping(value = "/validator")
-    public String validator(@Valid DemoEntity entity, BindingResult result){
+    @ApiOperation(value="验证信息", notes="验证")
+    @ApiImplicitParam(name = "entity", value = "用户详细实体user", required = true, dataType = "DemoEntity")
+    public String validator(@RequestBody DemoEntity entity, BindingResult result){
         if (result.hasErrors()){
             StringBuffer msg = new StringBuffer();
             List<FieldError> fieldErrors = result.getFieldErrors();
